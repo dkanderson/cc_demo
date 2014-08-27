@@ -1,0 +1,24 @@
+/* Basic Normalize */
+section{
+	display: block;
+}
+body{
+	margin:0;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline; 
+}
+[hidden],
+template {
+  display: none;
+}
+
+/* Default Styles */
+
+body{
+	background:#333;
+}
