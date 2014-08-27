@@ -22,3 +22,22 @@ template {
 body{
 	background:#333;
 }
+#cc_wrapper{
+	margin:100px auto 0 auto;
+	border:1px solid rgba(255,255,255,0.12);
+	width:50%;
+	height:auto;
+}
+video {
+  width: 100%    !important;
+  height: auto   !important;
+}
+img{
+	max-width: 100%;
+}
+figure { 
+	display: block; 
+	background: #222; 
+	padding: 5px; 
+	margin: 0 
+}
