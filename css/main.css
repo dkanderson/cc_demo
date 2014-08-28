@@ -25,7 +25,7 @@ body{
 #cc_wrapper{
 	margin:100px auto 0 auto;
 	border:1px solid rgba(255,255,255,0.12);
-	width:50%;
+	width:40%;
 	height:auto;
 }
 video {
@@ -35,9 +35,71 @@ video {
 img{
 	max-width: 100%;
 }
-figure { 
+figure.wrap_video { 
 	display: block; 
 	background: #222; 
 	padding: 5px; 
 	margin: 0 
+}
+dl{
+	margin:0;
+}
+dt{
+	color:#fff;
+	font-family: arial;
+	padding: 10px 20px;
+	border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+dd{
+	display: none;
+	color:#333;
+	font-family: arial;
+	padding:20px;
+}
+dd.active{
+	display: block;
+
+}
+
+
+/* Make it Filp */
+#cc_wrapper{
+	perspective: 2000;
+	-webkit-perspective: 1000;
+}
+#cc_wrapper:hover .flipthis{
+	-webkit-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+.flipthis{
+	-webkit-transition: all 0.6s;
+	-o-transition: all 0.6s;
+	transition: all 0.6s;
+
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	position:relative;
+
+}
+.front, .back{
+	backface-visibility:hidden;
+	-webkit-backface-visibility:hidden;
+	-moz-backface-visibility:hidden;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.back{
+	background-color: #000;
+	-webkit-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+	
+}
+.front{
+	z-index:2;
+	width:100%;
 }
