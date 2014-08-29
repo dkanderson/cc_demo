@@ -50,6 +50,10 @@ dt{
 	padding: 10px 20px;
 	border-bottom: 1px solid rgba(255,255,255,0.12);
 }
+dt span.fa{
+	color: #666;
+	margin-right: 10px;
+}
 dd{
 	display: none;
 	color:#333;
@@ -102,6 +106,7 @@ dd.active{
 	left:0;
 	box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
 	border-radius: 4px;
+	width:100%;
 }
 .back{
 	background-color: #000;
@@ -113,7 +118,6 @@ dd.active{
 }
 .front{
 	z-index:2;
-	width:100%;
 	background: #000;
 }
 .actions{
@@ -135,6 +139,9 @@ dd.active{
 }
 .actions a:hover span, a.flipTrigger:hover{
 	color:#febe10;
+}
+.actions span.fa{
+	margin-right:5px;
 }
 
 .front header, .back header{
@@ -163,4 +170,18 @@ a.flipTrigger{
 	position: absolute;
 	right:20px;
 	top:20px;
+}
+
+.gi{
+	margin:0;
+	padding: 0;
+}
+.gi li{
+	list-style-type: none;
+	padding:5px 0; 
+	color:#fff;
+}
+.gi li span{
+	font-weight: 600;
+	color:#669274;
 }
