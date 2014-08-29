@@ -7,7 +7,25 @@
 		Views:{},
 		Routes: {}
 	};
+  
+  $('.flipTrigger').on('click', function(){
+      $('#cc_wrapper').toggleClass('flip');
+  });
 
+  $('.meta-data dt').on('click', function(){
+    $('.meta-data dd').slideUp();
+    $('.meta-data dt').find('span').removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+    if($(this).next().is(':visible')){
+      $('.meta-data dt').find('span').removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+    }else{
+      $(this).find('span').removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
+    }
+
+    if(!$(this).next().is(':visible')){
+      $(this).next().slideDown();
+    }
+  });
+  
   var allVideos = $('iframe'), fluidEl = $("figure");
         
     allVideos.each(function() {
