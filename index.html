@@ -7,72 +7,78 @@
 	<title>Cue Card</title>
 </head>
 <body>
-	<div id="cc_wrapper">
+	<div id="cc_wrapper"></div> <!-- /cc_wrapper -->
+
+	<script id="appData" type="text/template">
+		<div id="transcript" class="transcript">
+			<div id="close-transcript">x</div>
+			<div class="inner-wrapper">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget lacus enim. Praesent non dui a tortor porta semper. Nulla sit amet fringilla nisl. Mauris id cursus justo. Vestibulum ut ex condimentum arcu scelerisque tristique quis at nulla. Morbi lobortis ante non quam accumsan semper. Nunc rutrum, ligula eu aliquet placerat, augue tellus condimentum sem, dictum elementum nisl ligula eu nibh. Duis eu convallis lorem. Sed consectetur mauris vitae magna pharetra lacinia.</p>
+
+				<p>Praesent non massa molestie, dapibus mauris vitae, lobortis elit. Etiam pretium metus ut lectus fringilla eleifend. Phasellus non purus laoreet, venenatis quam at, ullamcorper lectus. Sed odio leo, scelerisque non feugiat id, blandit dictum mi. Donec et porttitor mi. Sed at dignissim purus. Pellentesque dolor libero, dapibus in odio non, dictum egestas dui. Nulla rhoncus, enim vel malesuada pretium, ante dui blandit quam, ut suscipit nisl tortor eget dolor. Nulla quis sodales lorem. Nulla ultrices, nisl in tempor aliquam, enim velit sollicitudin enim, quis mattis eros orci in libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque luctus neque sed ante mollis, ut molestie nisi facilisis. Nunc at posuere nibh. Donec id porta risus, eget dapibus lectus. Vivamus volutpat est ut augue faucibus venenatis.</p>
+
+				<p>Quisque euismod turpis cursus lectus aliquet, ut sollicitudin leo vehicula. Cras ut nisl vel lectus fringilla fermentum at vel nulla. Aenean fringilla vestibulum dolor sit amet commodo. Morbi euismod leo lorem, et lobortis mi aliquam a. Quisque ac lorem ornare, congue libero sed, hendrerit elit. Integer gravida magna ex, dapibus fringilla leo lobortis sed. Donec quis egestas elit. Sed eget elit non mauris commodo aliquam nec ac ex. Curabitur sit amet nibh tellus. Proin iaculis lacus ac neque dictum aliquam. Sed a justo tortor. Mauris arcu massa, sollicitudin at rutrum ut, tincidunt id est. Vivamus ultricies, purus et sollicitudin rutrum, leo enim sagittis tortor, et lacinia nulla risus a orci. Maecenas mollis vestibulum faucibus.</p>
+			</div>
+		</div>
 		<div class="flipthis">
 			<section class="front">
-				<header class="cf">
-					<img src="img/logo.png" class="branding" alt="The Logo">
-					<h1>The Emmy's 2014: Robin Williams Tribute</h1>
-					<span class="air-date">Air Date: <time date-time="">08/23/2014</time></span>
-					 <a href="#" class="flipTrigger"><i class="fa fa-rotate-right"></i></a>
+				<header class="app-header cf">
+					<!-- Load Header -->
 				</header>
 				<figure class="wrap_video">
-					<iframe width="560" height="315" src="//www.youtube.com/embed/q86u0bDE17w" frameborder="0" allowfullscreen></iframe>
+					<iframe width="560" height="315" src="http://www.youtube.com/embed/q86u0bDE17w" frameborder="0" allowfullscreen></iframe>
 				</figure>
-				<footer>
-					<nav class="actions">
-						<a href="#"><span class="fa fa-save"></span>save</a>
-						<a href="#"><span class="fa fa-file-text"></span>notes</a>
-						<a href="#"><span class="fa fa-share"></span>share</a>
-						<a href="#"><span class="fa fa-print"></span>print</a>
-						<a href="#"><span class="fa fa-download"></span>download</a>
-						<a href="#"><span class="fa fa-check"></span>standards</a>
-					</nav>
-				</footer>
-			</section>
+				<footer class="util"></footer>
+			</section><!-- /front -->
 			<section class="back">
-				<header class="cf">
-					<img src="img/logo.png" class="branding" alt="The Logo">
-					<h1>The Emmy's 2014: Robin Williams Tribute</h1>
-					<span class="air-date">Air Date: <time date-time="">08/23/2014</time></span>
-					<a href="#" class="flipTrigger"><i class="fa fa-rotate-right"></i></a>
+				<header class="app-header cf">
+					<!-- Load Header -->
 				</header>
 				<dl class="meta-data">
-					<dt><span class="fa fa-plus-square-o fa-fw"></span>General Information</dt>
-						<dd>
-							<ul class="gi">
-								<li><span>Source: </span>NBC Youtube Channel</li>
-								<li><span>Creator: </span>Someone at NBC</li>
-								<li><span>Air Publish Date: </span>08/23/2014</li>
-								<li><span>Event Date: </span>08/23/2014</li>
-								<li><span>Resource Type: </span>Entertainment</li>
-								<li><span>Copyright: </span>NBC Universal Media, LLC</li>
-								<li><span>Copyright Date: </span>2014</li>
-								<li><span>Clip Length: </span>4:56</li>
-							</ul>
-						</dd>
-					<dt><span class="fa fa-minus-square-o fa-fw"></span>Description</dt>
-						<dd class="active">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique nisl vitae dolor tincidunt malesuada. Cras sed mi feugiat, gravida massa eget, rhoncus quam. Donec tincidunt nisi non lacus accumsan finibus. Fusce ut accumsan mi, et laoreet nisl. Nulla lobortis lacinia libero. Nunc ultrices neque at quam rutrum, ac consequat tortor ornare. Etiam lacinia placerat interdum. Proin id finibus tellus, quis pulvinar leo. Nam quis quam eu massa ornare interdum. Aenean id porttitor lectus.
-						</dd>
-					<dt><span class="fa fa-plus-square-o fa-fw"></span>Keywords</dt>
-						<dd></dd>
-					<dt><span class="fa fa-plus-square-o fa-fw"></span>Citation</dt>
-						<dd></dd>
+					<!-- Load Meta Data -->
 				</dl>
-				<footer>
-					<nav class="actions">
-						<a href="#"><span class="fa fa-save"></span>save</a>
-						<a href="#"><span class="fa fa-file-text"></span>notes</a>
-						<a href="#"><span class="fa fa-share"></span>share</a>
-						<a href="#"><span class="fa fa-print"></span>print</a>
-						<a href="#"><span class="fa fa-download"></span>download</a>
-						<a href="#"><span class="fa fa-check"></span>standards</a>
-					</nav>
+				<footer class="util">
+					<!-- Load Utitlity Buttons -->
 				</footer>
-			</section>
-		</div>
-	</div>
+			</section><!-- /back -->
+		</div> <!-- /flipthis -->
+			<div class="tr-wrap"><a href="#transcript" class="transcript-link">Transscript</a></div>
+			
+			
+			<div id="bottom-panel">
+				<!-- Load social Icons -->
+			</div>
+	</script>
+	<script id="metaData" type="text/template">
+		<dt><span class="fa fa-minus-square-o fa-fw"></span>General Information</dt>
+		<dd class="active">
+			<ul class="gi">
+				<li><span>Source: </span>NBC Youtube Channel</li>
+				<li><span>Creator: </span>Someone at NBC</li>
+				<li><span>Air Publish Date: </span>08/23/2014</li>
+				<li><span>Event Date: </span>08/23/2014</li>
+				<li><span>Resource Type: </span>Entertainment</li>
+				<li><span>Copyright: </span>NBC Universal Media, LLC</li>
+				<li><span>Copyright Date: </span>2014</li>
+				<li><span>Clip Length: </span>4:56</li>
+			</ul>
+		</dd>
+		<dt><span class="fa fa-plus-square-o fa-fw"></span>Description</dt>
+		<dd>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique nisl vitae dolor tincidunt malesuada. Cras sed mi feugiat, gravida massa eget, rhoncus quam. Donec tincidunt nisi non lacus accumsan finibus. Fusce ut accumsan mi, et laoreet nisl. Nulla lobortis lacinia libero. Nunc ultrices neque at quam rutrum, ac consequat tortor ornare. Etiam lacinia placerat interdum. Proin id finibus tellus, quis pulvinar leo. Nam quis quam eu massa ornare interdum. Aenean id porttitor lectus.
+		</dd>
+		<dt><span class="fa fa-plus-square-o fa-fw"></span>Keywords</dt>
+		<dd></dd>
+		<dt><span class="fa fa-plus-square-o fa-fw"></span>Citation</dt>
+		<dd></dd>
+	</script>
+	<script id="headerTemplate" type="text/template">
+		<img src="img/logo.png" class="branding" alt="The Logo">
+		<h1>The Emmys 2014: Robin Williams Tribute</h1>
+		<span class="air-date">Air Date: <time date-time="">08/23/2014</time></span>
+		<a href="#flipTrigger" class="flipTrigger"><i class="fa fa-rotate-right"></i></a>
+	</script>
+
 	<script src="js/vendor/underscore.js"></script>
 	<script src="js/vendor/jquery.js"></script>
 	<script src="js/vendor/backbone.js"></script>
