@@ -22,6 +22,9 @@ template {
 body{
 	background:#ccc;
 }
+a{
+	cursor: pointer;
+}
 #cc_wrapper{
 	margin:100px auto 0 auto;
 	width:600px;
