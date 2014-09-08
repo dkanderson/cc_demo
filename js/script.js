@@ -3,7 +3,11 @@
 
   'use strict';
 
-	var App = {
+  $(function() {
+     FastClick.attach(document.body);
+  });
+	
+  var App = {
 		Models:{},
 		Collections: {},
 		Views:{},
@@ -33,10 +37,12 @@
       template: template('appData'),
 
       initialize: function(){
-          console.log('fires');
-          $('.inner-wrapper').fadeOut('fast');
+          setTimeout(function(){
+              $('.inner-wrapper').hide();
+              $('#bottom-panel').hide();
+            }, 100 );
           this.render();
-          //vent.on('app:rendered', this.fixVideo, this);
+          $(window).on('resize', this.fitVid);
       },
 
       events: {
@@ -51,7 +57,6 @@
       },
 
       openTranscript: function(e){
-        console.log('clicked');
 
         $('.tr-wrap').addClass('opened');
         setTimeout(function(){
@@ -74,38 +79,44 @@
         }, 500);
       },
 
-      
-
+      fitVid: function(){
+        var wrapper = $('#cc_wrapper');
+        wrapper.fitVids(); 
+      }
 	});
 
   // Header View
   App.Views.Header = Backbone.View.extend({
-    el: '.app-header',
+      el: '.app-header',
 
-    template: template('headerTemplate'),
+      template: template('headerTemplate'),
 
-    events: {
-      'click .flipTrigger': 'flip',
-    },
+      events: {
+        'click .flipTrigger': 'flip',
+      },
 
-    initialize: function(){
-      this.render();
-    },
+      initialize: function(){
+        this.render();
+      },
 
-    flip: function(){
-      var wrapper = $('#cc_wrapper');
+      flip: function(){
+        var wrapper = $('#cc_wrapper');
 
-      wrapper.toggleClass('flip');
-      (wrapper.hasClass('flip')) ? wrapper.height($('.back').height()) : wrapper.height($('.front').height());
-    },
+        wrapper.toggleClass('flip');
+        (wrapper.hasClass('flip')) ? wrapper.height($('.back').height()) : wrapper.height($('.front').height());
+        setTimeout(function(){
+            $('#bottom-panel').css({ 'top': (wrapper.height() - 4) });          
+        }, 540);
+        
+      },
 
-    render: function(){
-      this.$el.html(this.template(this.model));
+      render: function(){
+        this.$el.html(this.template(this.model));
 
-      return this;
-    }
+        return this;
+      }
 
-  });
+    });
 
   App.Views.MetaData = Backbone.View.extend({
           el: '.meta-data',
@@ -118,6 +129,7 @@
 
           initialize: function(){
             this.render();
+            //vent.on('date:format', this.formatDate, this);
           },
 
           accordion: function(ev){
@@ -134,33 +146,75 @@
             }
           },
 
+          formatDate: function(){
+            console.log('fires');
+          },
+
           render: function(){
             this.$el.html(this.template(this.model));
             return this;
           }
-  });
+    });
 
   App.Views.Footer = Backbone.View.extend({
-          el: '.util',
+        el: '.util',
 
-          template: _.template('<nav class="actions"><a><span class="fa fa-save"></span>save</a><a href="#"><span class="fa fa-file-text"></span>notes</a><a class="toggle-share" href="#"><span class="fa fa-share"></span>share</a><a href="#"><span class="fa fa-print"></span>print</a><a href="#"><span class="fa fa-download"></span>download</a><a href="#"><span class="fa fa-check"></span>standards</a></nav>'),
+        template: _.template('<nav class="actions"><a><span class="fa fa-save"></span>save</a><a href="#"><span class="fa fa-file-text"></span>notes</a><a class="toggle-share" href="#"><span class="fa fa-share"></span>share</a><a href="#"><span class="fa fa-print"></span>print</a><a href="#"><span class="fa fa-download"></span>download</a><a href="#"><span class="fa fa-check"></span>standards</a></nav>'),
 
-          events: {
-              'click .toggle-share': 'toggleShare',
-          },
+        events: {
+            'click .toggle-share': 'toggleShare',
+        },
 
-          initialize: function(){
-            this.render();
-          },
+        initialize: function(){
+          this.render();
+        },
 
-          toggleShare: function () {
-            $('#bottom-panel').toggleClass('slide-down');
-          },
+        toggleShare: function () {
+          var panelH = $('#bottom-panel').innerHeight();
 
-          render: function(){
-            this.$el.html(this.template(this.model));
-            return this;
-          }
+          $('#bottom-panel').slideToggle();
+        },
+
+        render: function(){
+          this.$el.html(this.template(this.model));
+          return this;
+        }
+    });
+
+  App.Views.Social = Backbone.View.extend({
+      el: '#bottom-panel',
+
+      template: template('socialTpl'),
+
+      events: {
+        'click #close-panel': 'closePanel',
+      },
+
+      initialize: function(){
+        this.render();
+      },
+
+      render: function(){
+        this.$el.html(this.template());
+        return this;
+      }
+  });
+
+  App.Views.Video = Backbone.View.extend({
+    el: '.wrap_video',
+
+    template: template('theVideo'),
+
+    initialize: function(){
+      this.render();
+      $('#cc_wrapper').fitVids();
+    },
+
+    render: function(){
+      this.$el.html(this.template(this.model));
+    }
+
+
   });
 
   App.Routers.Kickstart = Backbone.Router.extend({
@@ -173,10 +227,12 @@
 
         this.nbcVideos.fetch({
           success: function(videoData){
-              $('body').append(new App.Views.App({model: videoData.models[0].attributes.data.items[0]}).render().el);
+              $('body').append(new App.Views.App({model: videoData.models[0].attributes.data.items[0]}).render());
               var headerView = new App.Views.Header({model: videoData.models[0].attributes.data.items[0]});
               var currentMeta = new App.Views.MetaData({model: videoData.models[0].attributes.data.items[0]});
               var footerView = new App.Views.Footer();
+              var bp = new App.Views.Social();
+              var theVideo = new App.Views.Video({model: videoData.models[0].attributes.data.items[0]});
           }
         });
     },
@@ -184,13 +240,20 @@
     start: function(){
       
 
-      //this.newApp = new App.Views.App({model: this.nbcVideos});  
-      
-
     }   
   });
 
-  
+_.template.parseDate = function(theDate){
+    var tempDate = Date.parse(theDate);
+    var myDate = new Date(tempDate);
+
+    var theMonth = myDate.getMonth();
+    var theDate = myDate.getDate();
+    var theYear = myDate.getFullYear();
+
+
+    return theMonth + '/' + theDate + '/' + theYear;
+}  
 
 var kickstart = new App.Routers.Kickstart;
 Backbone.history.start();
