@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/main.css">
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<title>Cue Card</title>
@@ -22,7 +23,7 @@
 					<!-- Load Header -->
 				</header>
 				<figure class="wrap_video">
-					<iframe width="590" height="400" src="http://www.youtube.com/embed/<%= id %>" frameborder="0" allowfullscreen></iframe>
+					
 				</figure>
 				<footer class="util"></footer>
 			</section><!-- /front -->
@@ -38,12 +39,11 @@
 				</footer>
 			</section><!-- /back -->
 		</div> <!-- /flipthis -->
-			<div class="tr-wrap"><a class="transcript-link">Transscript</a></div>
-			
-			
-			<div id="bottom-panel">
-				<!-- Load social Icons -->
-			</div>
+		<div id="bottom-panel">
+			<!-- Load social Icons -->
+		</div>
+		<div class="tr-wrap"><a class="transcript-link">Transscript</a></div>
+
 	</script>
 	<script id="metaData" type="text/template">
 		<dt><span class="fa fa-minus-square-o fa-fw"></span>General Information</dt>
@@ -51,8 +51,8 @@
 			<ul class="gi">
 				<li><span>Source: </span>NBC Youtube Channel</li>
 				<li><span>Creator: </span><%= uploader %></li>
-				<li><span>Air Publish Date: </span><%= uploaded %></li>
-				<li><span>Event Date: </span><%= uploaded %></li>
+				<li><span>Air Publish Date: </span><%= _.template.parseDate(uploaded) %></li>
+				<li><span>Event Date: </span><%= _.template.parseDate(uploaded) %></li>
 				<li><span>Resource Type: </span><%= category %></li>
 				<li><span>Copyright: </span>NBC Universal Media, LLC</li>
 				<li><span>Copyright Date: </span>2014</li>
@@ -70,14 +70,35 @@
 	</script>
 	<script id="headerTemplate" type="text/template">
 		<img src="img/logo.png" class="branding" alt="The Logo">
-		<h1><%= title %></h1>
-		<span class="air-date">Air Date: <time date-time="<%= uploaded %>"><%= uploaded %></time></span>
-		<a class="flipTrigger"><i class="fa fa-rotate-right"></i></a>
+		<div class="title-wrap">
+			<h1><%= title %></h1>
+			<span class="air-date">Air Date: <time date-time="<%= uploaded %>"><%= _.template.parseDate(uploaded) %></time></span>
+		</div>
+		<a class="flipTrigger"><i class="fa fa-rotate-right fa-2x"></i></a>
 	</script>
-
+	<script id="socialTpl" type="text/template">
+		<div class="share-this">
+			<nav class="social-icons">
+				<a><i class="fa fa-envelope"></i></a>
+				<a><i class="fa fa-twitter"></i></a>
+				<a><i class="fa fa-facebook"></i></a>
+				<a><i class="fa fa-instagram"></i></a>
+				<a><i class="fa fa-google-plus"></i></a>
+				<a><i class="fa fa-stumbleupon"></i></a>
+				<a><i class="fa fa-linkedin"></i></a>
+				<a><i class="fa fa-vine"></i></a>
+			</nav>
+		</div>
+	</script>
+	<script id="theVideo" type="text/template">
+		<iframe width="590" height="400" src="http://www.youtube.com/embed/<%= id %>?rel=0" frameborder="0" allowfullscreen></iframe>
+	</script>
+	
 	<script src="js/vendor/underscore.js"></script>
 	<script src="js/vendor/jquery.js"></script>
 	<script src="js/vendor/backbone.js"></script>
+	<script type='application/javascript' src="js/fastclick.js"></script>
+	<script src="js/fitvids.js"></script>
 	<script src="js/script.js"></script>
 </body>
 </html>
