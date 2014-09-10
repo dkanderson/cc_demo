@@ -367,8 +367,8 @@ a.flipTrigger{
 }
 @media screen and (max-width:780px){
 	#cc_wrapper{
-		width:94%;
-		margin: 10px 5px 20px 5px;
+		width:98%;
+		margin: 35px 5px 20px 5px;
 	}
 	.title-wrap{
 		width:60%;
@@ -385,10 +385,70 @@ a.flipTrigger{
 		display: block;
 		z-index: 20;
 	}
-	#close-transcript{
-		z-index: 9999;
-	}
 	.transcript{
 		max-width: 300px;
 	}
+	.tr-wrap{
+		width:200px;
+		height: 30px;
+		top: -26px;
+		right:0px;
+		background: #000;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+		border-left:1px solid rgba(0,0,0,0.12);
+		z-index: -1;
+
+		-webkit-transition: all 0.3s;
+		-o-transition: all 0.3s;
+		transition: all 0.3s;
+
+		-webkit-transform: translateX(0);
+		-ms-transform: translateX(0);
+		-o-transform: translateX(0);
+		transform: translateX(0);
+	}
+	.transcript-link{
+		display: block;
+		padding: 0 20px;
+		position: relative;
+		text-decoration: none;
+		color:#666;
+		font-family: arial;
+		font-size:1em;
+		line-height: 30px;
+		text-align: center;
+
+		-webkit-transition: all 0.3s;
+		-o-transition: all 0.3s;
+		transition: all 0.3s;
+
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	.transcript-link:hover{
+		color:#aaa;
+	}
+	.tr-wrap.opened{
+		-webkit-transition: all 0.6s;
+		-o-transition: all 0.6s;
+		transition: all 0.6s;
+
+		-webkit-transform: translateY(-40px);
+		-ms-transform: translateY(-40px);
+		-o-transform: translateY(-40px);
+		transform: translateY(-40px);
+
+		right:20px;
+	}
+	#close-transcript{
+		position: absolute;
+		left:-10px;
+		left:-10px;
+		z-index: 999999;
+	}
+
 }
