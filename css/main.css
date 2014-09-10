@@ -4,6 +4,7 @@ section{
 }
 body{
 	margin:0;
+	font-family: 'Open Sans', Arial;
 }
 audio,
 canvas,
@@ -24,6 +25,8 @@ body{
 }
 a{
 	cursor: pointer;
+	font-family: 'Open Sans', Arial;
+	font-weight: 100;
 }
 #cc_wrapper{
 	margin:20px;
@@ -72,7 +75,7 @@ dt span.fa{
 dd{
 	display: none;
 	color:#333;
-	font-family: arial;
+	font-family: 'open sans', arial;
 	padding:20px;
 }
 dd.active{
@@ -190,7 +193,7 @@ img.branding{
 }
 .front h1, .back h1{
 	color:#fff;
-	font-family: arial;
+	font-family: 'open sans', arial;
 	font-weight: 300;
 	font-size:1em;
 	margin-bottom: 5px;
