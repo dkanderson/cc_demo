@@ -22,18 +22,18 @@
     // global event function
     window.vent = _.extend({}, Backbone.Events);
 
-    App.Models.Videos = Backbone.Model.extend({
+    App.Models.Video = Backbone.Model.extend({
     });
 
     App.Collections.Videos = Backbone.Collection.extend({
-        model: App.Models.Videos,
+        model: App.Models.Video,
         url: 'http://gdata.youtube.com/feeds/api/users/nbc/uploads?alt=jsonc&v=2',
         parse: function(resp){
                 return resp.data.items;
         },
     });
 
-  // App View
+    // App View
     App.Views.App = Backbone.View.extend({
         el: '#cc_wrapper',
 
@@ -55,7 +55,6 @@
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
-
             return this;
         },
 
@@ -133,7 +132,6 @@
 
         initialize: function () {
             this.render();
-            //vent.on('date:format', this.formatDate, this);
         },
 
         accordion: function (ev) {
@@ -221,7 +219,6 @@
             var nbcVideos = new App.Collections.Videos();
             nbcVideos.fetch({
                 success: function (videoData) {
-                    console.log(videoData.at(0));
                     $('body').append(new App.Views.App({model: videoData.at(0)}).render());
                     var headerView = new App.Views.Header({model: videoData.at(0)}),
                         currentMeta = new App.Views.MetaData({model: videoData.at(0)}),
