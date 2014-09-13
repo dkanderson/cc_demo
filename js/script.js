@@ -27,7 +27,10 @@
 
     App.Collections.Videos = Backbone.Collection.extend({
         model: App.Models.Videos,
-        url: 'http://gdata.youtube.com/feeds/api/users/nbc/uploads?alt=jsonc&v=2'
+        url: 'http://gdata.youtube.com/feeds/api/users/nbc/uploads?alt=jsonc&v=2',
+        parse: function(resp){
+                return resp.data.items;
+        },
     });
 
   // App View
@@ -51,7 +54,7 @@
         },
 
         render: function () {
-            this.$el.html(this.template(this.model));
+            this.$el.html(this.template(this.model.toJSON()));
 
             return this;
         },
@@ -112,7 +115,7 @@
         },
 
         render: function () {
-            this.$el.html(this.template(this.model));
+            this.$el.html(this.template(this.model.toJSON()));
 
             return this;
         }
@@ -148,7 +151,7 @@
         },
 
         render: function () {
-            this.$el.html(this.template(this.model));
+            this.$el.html(this.template(this.model.toJSON()));
             return this;
         }
     });
@@ -171,7 +174,7 @@
         },
 
         render: function () {
-            this.$el.html(this.template(this.model));
+            this.$el.html(this.template());
             return this;
         }
     });
@@ -206,7 +209,7 @@
         },
 
         render: function () {
-            this.$el.html(this.template(this.model));
+            this.$el.html(this.template(this.model.toJSON()));
         }
     });
 
@@ -214,20 +217,20 @@
         routes: {
             "": "start"
         },
-
-        initialize: function () {
-            this.nbcVideos = new App.Collections.Videos();
-
-            this.nbcVideos.fetch({
+        start: function(){
+            var nbcVideos = new App.Collections.Videos();
+            nbcVideos.fetch({
                 success: function (videoData) {
-                    $('body').append(new App.Views.App({model: videoData.models[0].attributes.data.items[0]}).render());
-                    var headerView = new App.Views.Header({model: videoData.models[0].attributes.data.items[0]}),
-                        currentMeta = new App.Views.MetaData({model: videoData.models[0].attributes.data.items[0]}),
+                    console.log(videoData.at(0));
+                    $('body').append(new App.Views.App({model: videoData.at(0)}).render());
+                    var headerView = new App.Views.Header({model: videoData.at(0)}),
+                        currentMeta = new App.Views.MetaData({model: videoData.at(0)}),
                         footerView = new App.Views.Footer(),
                         bp = new App.Views.Social(),
-                        theVideo = new App.Views.Video({model: videoData.models[0].attributes.data.items[0]});
+                        theVideo = new App.Views.Video({model: videoData.at(0)});
                 }
             });
+
         }
     });
 
